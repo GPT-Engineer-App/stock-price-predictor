@@ -7,14 +7,6 @@ const Index = () => {
   const [predictedPrice, setPredictedPrice] = useState(null);
   const toast = useToast();
 
-  // Simulated more realistic stock price prediction
-  const simulatePricePrediction = (symbol) => {
-    const basePrice = 500;
-    const dailyFluctuation = Math.random() * 20 - 10;
-    const simulatedPrice = (basePrice + dailyFluctuation).toFixed(2);
-    return simulatedPrice;
-  };
-
   const handlePredictClick = () => {
     if (!stockSymbol.trim()) {
       toast({
@@ -27,8 +19,9 @@ const Index = () => {
       return;
     }
 
-    const predictedPrice = simulatePricePrediction(stockSymbol);
-    setPredictedPrice(predictedPrice);
+    // Mock prediction logic
+    const randomPrice = (Math.random() * 1000).toFixed(2);
+    setPredictedPrice(randomPrice);
   };
 
   return (
@@ -47,14 +40,9 @@ const Index = () => {
           Predict Price
         </Button>
         {predictedPrice && (
-          <VStack spacing={4}>
-            <Text fontSize="xl" textAlign="center">
-              Predicted Price: ₹ {predictedPrice}
-            </Text>
-            <Box boxSize="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-              <Image src="/static/stock-graph-placeholder.png" alt="Stock graph" />
-            </Box>
-          </VStack>
+          <Text fontSize="xl" textAlign="center">
+            Predicted Price: ₹ {predictedPrice}
+          </Text>
         )}
       </VStack>
     </Container>
