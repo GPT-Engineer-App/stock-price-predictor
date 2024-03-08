@@ -19,9 +19,12 @@ const Index = () => {
       return;
     }
 
-    // Mock prediction logic
-    const randomPrice = (Math.random() * 1000).toFixed(2);
-    setPredictedPrice(randomPrice);
+    // Simulate more realistic prediction with a simple mathematical model
+    const basePrice = 500;
+    const fluctuationPercentage = 0.05;
+    const fluctuation = (basePrice * fluctuationPercentage * (Math.random() - 0.5) * 2).toFixed(2);
+    const realisticPrice = (basePrice + parseFloat(fluctuation)).toFixed(2);
+    setPredictedPrice(realisticPrice);
   };
 
   return (
